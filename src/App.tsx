@@ -14,6 +14,9 @@ import ParentPortal from "./pages/ParentPortal";
 import Auth from "./pages/Auth";
 import Pending from "./pages/Pending";
 import NotFound from "./pages/NotFound";
+import AdminDashboard from "./pages/admin/AdminDashboard";
+import AdminApplications from "./pages/admin/AdminApplications";
+import TeacherDashboard from "./pages/teacher/TeacherDashboard";
 
 const queryClient = new QueryClient();
 
@@ -34,6 +37,11 @@ const App = () => (
             <Route path="/auth" element={<Auth />} />
             <Route path="/login" element={<Auth />} />
             <Route path="/pending" element={<Pending />} />
+            {/* Admin Routes */}
+            <Route path="/admin" element={<AdminDashboard />} />
+            <Route path="/admin/applications" element={<AdminApplications />} />
+            {/* Teacher Routes */}
+            <Route path="/teacher" element={<TeacherDashboard />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

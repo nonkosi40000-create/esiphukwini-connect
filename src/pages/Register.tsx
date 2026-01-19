@@ -294,11 +294,25 @@ const Register = () => {
         if (staffError) throw staffError;
       }
 
+      // Send registration confirmation email
+      try {
+        await supabase.functions.invoke('send-registration-email', {
+          body: {
+            email: formData.email,
+            firstName: formData.firstName,
+            lastName: formData.lastName,
+            role: userType,
+          },
+        });
+      } catch (emailError) {
+        console.log('Email notification failed, but registration succeeded:', emailError);
+      }
+
       toast({
         title: 'Registration Successful!',
         description: userType === 'admin' 
           ? 'Your admin account is ready. Redirecting...'
-          : 'Your application has been submitted for review.',
+          : 'Your application has been submitted for review. Check your email for confirmation.',
       });
 
       setStep(getTotalSteps() + 1); // Success step
