@@ -24,6 +24,7 @@ import { useAuth } from "@/hooks/useAuth";
 import { FileUpload } from "@/components/auth/FileUpload";
 import { learnerRegistrationSchema, staffRegistrationSchema } from "@/lib/validations";
 import { supabase } from "@/integrations/supabase/client";
+import type { Database } from "@/integrations/supabase/types";
 import patternBg from "@/assets/pattern-bg.jpg";
 
 type UserType = 'learner' | 'teacher' | 'grade_head' | 'principal' | 'admin';
@@ -267,17 +268,17 @@ const Register = () => {
       if (userType === 'learner') {
         const { error: learnerError } = await supabase
           .from('learner_registrations')
-          .insert({
+          .insert([{
             user_id: userId,
-            previous_grade: formData.previousGrade || null,
-            applying_for_grade: formData.applyingForGrade,
-            parent_guardian_name: formData.parentGuardianName,
-            parent_guardian_phone: formData.parentGuardianPhone,
+            previous_grade: formData.previousGrade as Database["public"]["Enums"]["grade_level"] || null,
+            applying_for_grade: formData.applyingForGrade as Database["public"]["Enums"]["grade_level"],
+            parent_guardian_name: formData.parentGuardianName!,
+            parent_guardian_phone: formData.parentGuardianPhone!,
             parent_guardian_email: formData.parentGuardianEmail || null,
-            parent_guardian_id_url: documents.parentGuardianId,
-            previous_report_url: documents.previousReport,
-            banking_details_url: documents.bankingDetails,
-          });
+            parent_guardian_id_url: documents.parentGuardianId!,
+            previous_report_url: documents.previousReport!,
+            banking_details_url: documents.bankingDetails!,
+          }]);
 
         if (learnerError) throw learnerError;
       } else {
