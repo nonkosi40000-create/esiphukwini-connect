@@ -270,7 +270,7 @@ const Register = () => {
           .from('learner_registrations')
           .insert([{
             user_id: userId,
-            previous_grade: formData.previousGrade as Database["public"]["Enums"]["grade_level"] || null,
+            previous_grade: (formData.previousGrade || null) as Database["public"]["Enums"]["grade_level"] | null,
             applying_for_grade: formData.applyingForGrade as Database["public"]["Enums"]["grade_level"],
             parent_guardian_name: formData.parentGuardianName!,
             parent_guardian_phone: formData.parentGuardianPhone!,
