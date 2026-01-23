@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { GraduationCap, Mail, Phone, MapPin, Facebook, Twitter, Instagram } from "lucide-react";
+import { SchoolLogo } from "@/components/SchoolLogo";
+import { Mail, Phone, MapPin, Facebook, Twitter, Instagram, Clock } from "lucide-react";
 
 export function Footer() {
   return (
@@ -8,17 +9,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* School Info */}
           <div className="space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="bg-primary-foreground/20 p-2 rounded-xl">
-                <GraduationCap className="h-7 w-7" />
-              </div>
-              <div className="flex flex-col">
-                <span className="font-display text-lg font-bold leading-tight">
-                  Esiphukwini
-                </span>
-                <span className="text-xs text-primary-foreground/80">Junior Primary School</span>
-              </div>
-            </div>
+            <SchoolLogo variant="white" size="md" />
             <p className="text-sm text-primary-foreground/80 leading-relaxed">
               Empowering young minds since 1985. Building a foundation for lifelong learning and success.
             </p>
@@ -42,6 +33,7 @@ export function Footer() {
               {[
                 { name: "About Us", href: "/about" },
                 { name: "Academics", href: "/academics" },
+                { name: "Gallery", href: "/gallery" },
                 { name: "Register Now", href: "/register" },
                 { name: "Past Papers", href: "/past-papers" },
                 { name: "Parent Portal", href: "/parent-portal" },
@@ -88,19 +80,29 @@ export function Footer() {
               <li className="flex items-start gap-3">
                 <MapPin className="h-5 w-5 mt-0.5 flex-shrink-0 text-gold" />
                 <span className="text-sm text-primary-foreground/80">
-                  123 Education Street, Township, South Africa
+                  Esiphukwini Junior Primary School, Inwabi, Cele, 4142
                 </span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="h-5 w-5 flex-shrink-0 text-gold" />
-                <span className="text-sm text-primary-foreground/80">
-                  +27 12 345 6789
-                </span>
+                <div className="text-sm text-primary-foreground/80">
+                  <div>075 230 3304</div>
+                  <div>072 209 8878</div>
+                </div>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="h-5 w-5 flex-shrink-0 text-gold" />
+                <a 
+                  href="mailto:esiphukwiniprimaryschool@gmail.com"
+                  className="text-sm text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+                >
+                  esiphukwiniprimaryschool@gmail.com
+                </a>
+              </li>
+              <li className="flex items-center gap-3">
+                <Clock className="h-5 w-5 flex-shrink-0 text-gold" />
                 <span className="text-sm text-primary-foreground/80">
-                  info@esiphukwini.edu.za
+                  Mon - Fri: 7AM - 4PM
                 </span>
               </li>
             </ul>
@@ -115,6 +117,13 @@ export function Footer() {
             <a href="#" className="hover:text-primary-foreground transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-primary-foreground transition-colors">Terms of Service</a>
           </div>
+        </div>
+        
+        {/* Developer Credit */}
+        <div className="mt-4 text-center">
+          <p className="text-xs text-primary-foreground/50">
+            This website was Developed By: <a href="#" className="underline hover:text-primary-foreground transition-colors">Lovable</a>
+          </p>
         </div>
       </div>
     </footer>

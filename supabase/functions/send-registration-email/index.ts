@@ -76,9 +76,11 @@ const handler = async (req: Request): Promise<Response> => {
               
               <p>If you have any questions or need assistance, please don't hesitate to contact us:</p>
               <ul>
-                <li>📧 Email: admin@esiphukwini.edu.za</li>
-                <li>📞 Phone: +27 12 345 6789</li>
+                <li>📧 Email: esiphukwiniprimaryschool@gmail.com</li>
+                <li>📞 Phone: 075 230 3304 / 072 209 8878</li>
               </ul>
+              <p><strong>Business Hours:</strong> Monday - Friday, 7AM - 4PM</p>
+              <p><strong>Address:</strong> Esiphukwini Junior Primary School, Inwabi, Cele, 4142</p>
               
               <p>Thank you for choosing Esiphukwini Junior Primary School. We look forward to having you as part of our community!</p>
               

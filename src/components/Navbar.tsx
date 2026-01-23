@@ -1,13 +1,15 @@
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
-import { Menu, X, GraduationCap } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { SchoolLogo } from "@/components/SchoolLogo";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navigation = [
   { name: "Home", href: "/" },
   { name: "About Us", href: "/about" },
   { name: "Academics", href: "/academics" },
+  { name: "Gallery", href: "/gallery" },
   { name: "Past Papers", href: "/past-papers" },
   { name: "Register", href: "/register" },
   { name: "Parent Portal", href: "/parent-portal" },
@@ -21,16 +23,8 @@ export function Navbar() {
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
       <nav className="container mx-auto flex items-center justify-between py-4 px-4 lg:px-8">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-3">
-          <div className="gradient-primary p-2 rounded-xl">
-            <GraduationCap className="h-7 w-7 text-primary-foreground" />
-          </div>
-          <div className="flex flex-col">
-            <span className="font-display text-lg font-bold text-foreground leading-tight">
-              Esiphukwini
-            </span>
-            <span className="text-xs text-muted-foreground">Junior Primary School</span>
-          </div>
+        <Link to="/" className="flex items-center">
+          <SchoolLogo size="sm" />
         </Link>
 
         {/* Desktop Navigation */}

@@ -98,7 +98,7 @@ const Index = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground leading-tight mb-6"
+              className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground leading-tight mb-4"
             >
               Building Bright Futures at{" "}
               <span className="text-gold">Esiphukwini</span>
@@ -107,11 +107,21 @@ const Index = () => {
             <motion.p
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.15 }}
+              className="text-gold font-semibold text-xl mb-4 uppercase tracking-wider"
+            >
+              Arise and Shine
+            </motion.p>
+
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-lg md:text-xl text-primary-foreground/90 mb-8 leading-relaxed"
             >
-              A modern primary school experience where technology meets education.
-              Register online, access resources, and stay connected with your child's learning journey.
+              We are committed in providing quality education for all and thus developing 
+              the potential of each learner through effective communication and networking 
+              with all stakeholders.
             </motion.p>
 
             <motion.div

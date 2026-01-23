@@ -97,18 +97,18 @@ const Pending = () => {
               <h3 className="font-semibold text-foreground mb-4">Need help?</h3>
               <div className="space-y-3">
                 <a 
-                  href="mailto:info@esiphukwini.edu.za" 
+                  href="mailto:esiphukwiniprimaryschool@gmail.com" 
                   className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors"
                 >
                   <Mail className="h-5 w-5 text-primary" />
-                  <span>info@esiphukwini.edu.za</span>
+                  <span>esiphukwiniprimaryschool@gmail.com</span>
                 </a>
                 <a 
-                  href="tel:+27123456789" 
+                  href="tel:0752303304" 
                   className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors"
                 >
                   <Phone className="h-5 w-5 text-primary" />
-                  <span>+27 12 345 6789</span>
+                  <span>075 230 3304 / 072 209 8878</span>
                 </a>
               </div>
             </div>

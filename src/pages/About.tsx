@@ -7,11 +7,13 @@ import {
   Target, 
   Award, 
   Users, 
-  Calendar,
   ArrowRight,
   Heart,
   Lightbulb,
-  Star
+  Star,
+  Trophy,
+  Music,
+  Dribbble
 } from "lucide-react";
 import patternBg from "@/assets/pattern-bg.jpg";
 
@@ -19,7 +21,7 @@ const timeline = [
   {
     year: "1985",
     title: "Foundation",
-    description: "Esiphukwini Junior Primary School was established with just 3 classrooms and 50 students.",
+    description: "Esiphukwini Junior Primary School was established in the Ngonyameni Area with just 3 classrooms and 50 students.",
   },
   {
     year: "1995",
@@ -66,6 +68,58 @@ const values = [
   },
 ];
 
+const sports = [
+  { name: "Netball", icon: Trophy },
+  { name: "Soccer", icon: Dribbble },
+  { name: "Athletics", icon: Trophy },
+  { name: "Cricket", icon: Trophy },
+  { name: "Spelling Bee", icon: BookOpen },
+  { name: "Choir", icon: Music },
+];
+
+// School Governing Body structure
+const sgbStructure = [
+  {
+    role: "SGB Chairperson",
+    description: "Leads the School Governing Body and oversees school governance",
+  },
+  {
+    role: "SGB Deputy Chairperson",
+    description: "Assists the Chairperson and acts in their absence",
+  },
+  {
+    role: "SGB Secretary",
+    description: "Manages documentation and communication",
+  },
+  {
+    role: "SGB Treasurer",
+    description: "Oversees school finances and budgeting",
+  },
+  {
+    role: "Parent Representatives",
+    description: "Voice of parents in school matters",
+  },
+];
+
+const schoolDepartments = [
+  {
+    title: "Administration",
+    roles: ["Principal", "Admin Clerk", "Finance Officer"],
+  },
+  {
+    title: "Academic Department",
+    roles: ["Grade Heads (R-7)", "Subject Coordinators", "Teachers"],
+  },
+  {
+    title: "Support Services",
+    roles: ["Librarian", "IT Support", "Counselor"],
+  },
+  {
+    title: "Operations",
+    roles: ["Caretaker", "Security", "Cleaners"],
+  },
+];
+
 const About = () => {
   return (
     <Layout>
@@ -87,7 +141,10 @@ const About = () => {
             </h1>
             <p className="text-primary-foreground/80 text-lg leading-relaxed">
               For over 35 years, Esiphukwini Junior Primary School has been shaping young minds 
-              and building a foundation for lifelong success in our community.
+              and building a foundation for lifelong success in the Ngonyameni Area.
+            </p>
+            <p className="text-gold font-semibold text-xl mt-4 uppercase tracking-wider">
+              Arise and Shine
             </p>
           </motion.div>
         </div>
@@ -106,7 +163,7 @@ const About = () => {
               {
                 icon: BookOpen,
                 title: "Our Vision",
-                description: "To be a leading primary school that inspires a love for learning, embraces innovation, and develops responsible citizens of tomorrow.",
+                description: "We are committed in providing quality education for all and thus developing the potential of each learner through effective communication and networking with all stakeholders.",
               },
               {
                 icon: Award,
@@ -131,6 +188,122 @@ const About = () => {
                 <p className="text-muted-foreground leading-relaxed">
                   {item.description}
                 </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* School Organogram */}
+      <section className="py-20 bg-muted">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center max-w-2xl mx-auto mb-16"
+          >
+            <span className="text-sm font-semibold text-primary uppercase tracking-wider">
+              School Structure
+            </span>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mt-3 mb-4">
+              School Organogram
+            </h2>
+            <p className="text-muted-foreground">
+              Our organizational structure ensures effective management and quality education
+            </p>
+          </motion.div>
+
+          {/* SGB Section */}
+          <div className="mb-12">
+            <h3 className="font-display text-2xl font-bold text-center text-foreground mb-8">
+              School Governing Body (SGB)
+            </h3>
+            <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-4">
+              {sgbStructure.map((item, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: index * 0.1 }}
+                  className="bg-card rounded-xl p-4 shadow-soft text-center border-2 border-primary/20"
+                >
+                  <div className="bg-primary/10 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <Users className="h-6 w-6 text-primary" />
+                  </div>
+                  <h4 className="font-semibold text-foreground text-sm mb-2">{item.role}</h4>
+                  <p className="text-muted-foreground text-xs">{item.description}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          {/* School Departments */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {schoolDepartments.map((dept, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="bg-card rounded-xl p-6 shadow-soft"
+              >
+                <div className="gradient-primary w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                  <Award className="h-6 w-6 text-primary-foreground" />
+                </div>
+                <h4 className="font-display text-lg font-bold text-foreground mb-4">
+                  {dept.title}
+                </h4>
+                <ul className="space-y-2">
+                  {dept.roles.map((role, roleIndex) => (
+                    <li key={roleIndex} className="flex items-center gap-2 text-sm text-muted-foreground">
+                      <div className="w-2 h-2 rounded-full bg-primary" />
+                      {role}
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Sports & Extra-Curricular */}
+      <section className="py-20 bg-background">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center max-w-2xl mx-auto mb-16"
+          >
+            <span className="text-sm font-semibold text-primary uppercase tracking-wider">
+              Extra-Curricular
+            </span>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mt-3 mb-4">
+              Sports & Activities
+            </h2>
+            <p className="text-muted-foreground">
+              We offer a variety of sports and activities to develop well-rounded learners
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+            {sports.map((sport, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+                className="bg-card rounded-xl p-6 shadow-soft text-center hover:shadow-elevated transition-all duration-300 group"
+              >
+                <div className="bg-primary/10 w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                  <sport.icon className="h-7 w-7 text-primary group-hover:text-primary-foreground" />
+                </div>
+                <h4 className="font-semibold text-foreground">{sport.name}</h4>
               </motion.div>
             ))}
           </div>

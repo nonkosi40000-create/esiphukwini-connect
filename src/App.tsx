@@ -17,6 +17,7 @@ import NotFound from "./pages/NotFound";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminApplications from "./pages/admin/AdminApplications";
 import TeacherDashboard from "./pages/teacher/TeacherDashboard";
+import Gallery from "./pages/Gallery";
 
 const queryClient = new QueryClient();
 
@@ -31,6 +32,7 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/about" element={<About />} />
             <Route path="/academics" element={<Academics />} />
+            <Route path="/gallery" element={<Gallery />} />
             <Route path="/register" element={<Register />} />
             <Route path="/past-papers" element={<PastPapers />} />
             <Route path="/parent-portal" element={<ParentPortal />} />
