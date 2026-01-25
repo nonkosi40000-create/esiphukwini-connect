@@ -16,20 +16,43 @@ import {
 } from "lucide-react";
 import patternBg from "@/assets/pattern-bg.jpg";
 
-const grades = [
+// Foundation Phase (Grade R-3)
+const foundationPhaseGrades = [
   { grade: "Grade R", ages: "5-6 years", students: 45, available: true },
   { grade: "Grade 1", ages: "6-7 years", students: 52, available: true },
   { grade: "Grade 2", ages: "7-8 years", students: 48, available: true },
   { grade: "Grade 3", ages: "8-9 years", students: 55, available: false },
 ];
 
-const subjects = [
-  { icon: BookOpen, name: "Languages", description: "English & Home Language literacy development" },
-  { icon: Calculator, name: "Mathematics", description: "Foundational numeracy and problem-solving" },
-  { icon: Globe, name: "Life Skills", description: "Social development and well-being" },
-  { icon: Palette, name: "Creative Arts", description: "Visual arts, drama, and music" },
-  { icon: Music, name: "Physical Education", description: "Sports and movement activities" },
-  { icon: Trophy, name: "Extra-Curricular", description: "Clubs, sports teams, and events" },
+const foundationPhaseSubjects = [
+  { icon: Calculator, name: "Mathematics", description: "Foundational numeracy and problem-solving skills" },
+  { icon: BookOpen, name: "IsiZulu", description: "Home language literacy and communication" },
+  { icon: Globe, name: "English", description: "First additional language development" },
+  { icon: Palette, name: "Life Skills", description: "Personal, social and physical development" },
+];
+
+// Intermediate Phase (Grade 4-6)
+const intermediatePhaseGrades = [
+  { grade: "Grade 4", ages: "9-10 years", students: 50, available: true },
+  { grade: "Grade 5", ages: "10-11 years", students: 48, available: true },
+  { grade: "Grade 6", ages: "11-12 years", students: 52, available: false },
+];
+
+const intermediateAndSeniorSubjects = [
+  { icon: Calculator, name: "Mathematics", description: "Numeracy, algebra and problem-solving" },
+  { icon: BookOpen, name: "IsiZulu", description: "Home language literacy and literature" },
+  { icon: Globe, name: "English", description: "First additional language proficiency" },
+  { icon: BookOpen, name: "Natural Sciences", description: "Scientific inquiry and investigation" },
+  { icon: Globe, name: "Social Sciences", description: "History and Geography" },
+  { icon: Calculator, name: "EMS", description: "Economic and Management Sciences" },
+  { icon: Palette, name: "Life Orientation", description: "Personal and social well-being" },
+  { icon: Trophy, name: "Technology", description: "Design and technological skills" },
+  { icon: Music, name: "Creative Arts", description: "Visual arts, drama, dance and music" },
+];
+
+// Senior Phase (Grade 7)
+const seniorPhaseGrades = [
+  { grade: "Grade 7", ages: "12-13 years", students: 45, available: true },
 ];
 
 const scheduleItems = [
@@ -68,7 +91,7 @@ const Academics = () => {
         </div>
       </section>
 
-      {/* Grade Levels */}
+      {/* Foundation Phase - Grade R-3 */}
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <motion.div
@@ -78,18 +101,18 @@ const Academics = () => {
             className="text-center max-w-2xl mx-auto mb-16"
           >
             <span className="text-sm font-semibold text-primary uppercase tracking-wider">
-              Our Grades
+              Foundation Phase
             </span>
             <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mt-3 mb-4">
-              Foundation Phase Education
+              Grade R - 3
             </h2>
             <p className="text-muted-foreground">
-              We cater to learners from Grade R to Grade 3, providing age-appropriate education
+              Building strong foundations for lifelong learning
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {grades.map((item, index) => (
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            {foundationPhaseGrades.map((item, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
@@ -132,10 +155,33 @@ const Academics = () => {
               </motion.div>
             ))}
           </div>
+
+          {/* Foundation Phase Subjects */}
+          <div className="bg-muted rounded-2xl p-8">
+            <h3 className="font-display text-xl font-bold text-foreground mb-6 text-center">Foundation Phase Subjects</h3>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+              {foundationPhaseSubjects.map((subject, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: index * 0.1 }}
+                  className="bg-card rounded-xl p-4 shadow-soft group hover:shadow-elevated transition-all duration-300"
+                >
+                  <div className="gradient-primary w-10 h-10 rounded-lg flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                    <subject.icon className="h-5 w-5 text-primary-foreground" />
+                  </div>
+                  <h4 className="font-display font-bold text-foreground mb-1">{subject.name}</h4>
+                  <p className="text-muted-foreground text-xs">{subject.description}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Subjects */}
+      {/* Intermediate Phase - Grade 4-6 */}
       <section className="py-20 bg-muted">
         <div className="container mx-auto px-4">
           <motion.div
@@ -145,35 +191,147 @@ const Academics = () => {
             className="text-center max-w-2xl mx-auto mb-16"
           >
             <span className="text-sm font-semibold text-primary uppercase tracking-wider">
-              Curriculum
+              Intermediate Phase
             </span>
             <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mt-3 mb-4">
-              What We Teach
+              Grade 4 - 6
             </h2>
             <p className="text-muted-foreground">
-              A balanced curriculum covering all essential learning areas
+              Developing critical thinking and independent learning skills
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {subjects.map((subject, index) => (
+          <div className="grid md:grid-cols-3 gap-6 mb-12">
+            {intermediatePhaseGrades.map((item, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-card rounded-xl p-6 shadow-soft group hover:shadow-elevated transition-all duration-300"
+                className="bg-card rounded-xl p-6 shadow-soft border border-border"
               >
-                <div className="gradient-primary w-12 h-12 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                  <subject.icon className="h-6 w-6 text-primary-foreground" />
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="font-display text-xl font-bold text-foreground">
+                    {item.grade}
+                  </h3>
+                  <span className={`px-3 py-1 rounded-full text-xs font-medium ${
+                    item.available 
+                      ? "bg-green-100 text-green-700" 
+                      : "bg-red-100 text-red-700"
+                  }`}>
+                    {item.available ? "Spaces Available" : "Full"}
+                  </span>
                 </div>
-                <h3 className="font-display text-lg font-bold text-foreground mb-2">
-                  {subject.name}
-                </h3>
-                <p className="text-muted-foreground text-sm">
-                  {subject.description}
-                </p>
+                <div className="space-y-2 text-sm text-muted-foreground">
+                  <div className="flex items-center gap-2">
+                    <Users className="h-4 w-4 text-primary" />
+                    <span>{item.students} students enrolled</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Star className="h-4 w-4 text-primary" />
+                    <span>Ages: {item.ages}</span>
+                  </div>
+                </div>
+                <Link to="/register" className="block mt-4">
+                  <Button 
+                    variant={item.available ? "default" : "outline"} 
+                    className="w-full"
+                    disabled={!item.available}
+                  >
+                    {item.available ? "Apply Now" : "Join Waitlist"}
+                  </Button>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Intermediate Phase Subjects */}
+          <div className="bg-card rounded-2xl p-8">
+            <h3 className="font-display text-xl font-bold text-foreground mb-6 text-center">Intermediate & Senior Phase Subjects</h3>
+            <div className="grid md:grid-cols-3 lg:grid-cols-3 gap-4">
+              {intermediateAndSeniorSubjects.map((subject, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: index * 0.05 }}
+                  className="bg-muted rounded-xl p-4 shadow-soft group hover:shadow-elevated transition-all duration-300"
+                >
+                  <div className="gradient-primary w-10 h-10 rounded-lg flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                    <subject.icon className="h-5 w-5 text-primary-foreground" />
+                  </div>
+                  <h4 className="font-display font-bold text-foreground mb-1">{subject.name}</h4>
+                  <p className="text-muted-foreground text-xs">{subject.description}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Senior Phase - Grade 7 */}
+      <section className="py-20 bg-background">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center max-w-2xl mx-auto mb-16"
+          >
+            <span className="text-sm font-semibold text-primary uppercase tracking-wider">
+              Senior Phase
+            </span>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mt-3 mb-4">
+              Grade 7
+            </h2>
+            <p className="text-muted-foreground">
+              Preparing learners for high school and beyond
+            </p>
+          </motion.div>
+
+          <div className="max-w-md mx-auto">
+            {seniorPhaseGrades.map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                className="bg-card rounded-xl p-6 shadow-soft border border-border"
+              >
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="font-display text-xl font-bold text-foreground">
+                    {item.grade}
+                  </h3>
+                  <span className={`px-3 py-1 rounded-full text-xs font-medium ${
+                    item.available 
+                      ? "bg-green-100 text-green-700" 
+                      : "bg-red-100 text-red-700"
+                  }`}>
+                    {item.available ? "Spaces Available" : "Full"}
+                  </span>
+                </div>
+                <div className="space-y-2 text-sm text-muted-foreground">
+                  <div className="flex items-center gap-2">
+                    <Users className="h-4 w-4 text-primary" />
+                    <span>{item.students} students enrolled</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Star className="h-4 w-4 text-primary" />
+                    <span>Ages: {item.ages}</span>
+                  </div>
+                </div>
+                <Link to="/register" className="block mt-4">
+                  <Button 
+                    variant={item.available ? "default" : "outline"} 
+                    className="w-full"
+                    disabled={!item.available}
+                  >
+                    {item.available ? "Apply Now" : "Join Waitlist"}
+                  </Button>
+                </Link>
               </motion.div>
             ))}
           </div>
