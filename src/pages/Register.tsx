@@ -41,16 +41,43 @@ const gradeOptions: { value: GradeLevel; label: string }[] = [
   { value: '7', label: 'Grade 7' },
 ];
 
-const subjectOptions = [
+// Foundation Phase (Grade R-3)
+const foundationPhaseSubjects = [
   'Mathematics',
+  'IsiZulu',
   'English',
   'Life Skills',
+];
+
+// Intermediate Phase (Grade 4-6) & Senior Phase (Grade 7)
+const intermediateAndSeniorSubjects = [
+  'Mathematics',
+  'IsiZulu',
+  'English',
   'Natural Sciences',
   'Social Sciences',
+  'EMS',
+  'Life Orientation',
   'Technology',
   'Creative Arts',
-  'Physical Education',
 ];
+
+// Helper function to get subjects based on grades
+const getSubjectsForGrades = (grades: GradeLevel[]): string[] => {
+  const hasFoundationPhase = grades.some(g => ['R', '1', '2', '3'].includes(g));
+  const hasIntermediateOrSenior = grades.some(g => ['4', '5', '6', '7'].includes(g));
+  
+  const subjects = new Set<string>();
+  
+  if (hasFoundationPhase) {
+    foundationPhaseSubjects.forEach(s => subjects.add(s));
+  }
+  if (hasIntermediateOrSenior) {
+    intermediateAndSeniorSubjects.forEach(s => subjects.add(s));
+  }
+  
+  return Array.from(subjects);
+};
 
 const Register = () => {
   const { toast } = useToast();
@@ -768,7 +795,7 @@ const Register = () => {
                           <div className="space-y-2">
                             <Label>Subjects Teaching</Label>
                             <div className="grid grid-cols-2 gap-2">
-                              {subjectOptions.map(subject => (
+                              {getSubjectsForGrades(formData.gradesTeaching).map(subject => (
                                 <label 
                                   key={subject}
                                   className={`flex items-center gap-2 p-3 rounded-lg border cursor-pointer transition-all ${
