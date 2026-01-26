@@ -371,6 +371,42 @@ export type Database = {
           },
         ]
       }
+      messages: {
+        Row: {
+          attachment_url: string | null
+          content: string
+          created_at: string
+          id: string
+          is_read: boolean | null
+          message_type: string
+          recipient_id: string
+          sender_id: string
+          subject: string
+        }
+        Insert: {
+          attachment_url?: string | null
+          content: string
+          created_at?: string
+          id?: string
+          is_read?: boolean | null
+          message_type?: string
+          recipient_id: string
+          sender_id: string
+          subject: string
+        }
+        Update: {
+          attachment_url?: string | null
+          content?: string
+          created_at?: string
+          id?: string
+          is_read?: boolean | null
+          message_type?: string
+          recipient_id?: string
+          sender_id?: string
+          subject?: string
+        }
+        Relationships: []
+      }
       parent_subscriptions: {
         Row: {
           created_at: string
@@ -614,6 +650,9 @@ export type Database = {
         Returns: boolean
       }
       is_admin_or_principal: { Args: { _user_id: string }; Returns: boolean }
+      is_grade_head: { Args: { _user_id: string }; Returns: boolean }
+      is_principal: { Args: { _user_id: string }; Returns: boolean }
+      is_sgb: { Args: { _user_id: string }; Returns: boolean }
       is_staff: { Args: { _user_id: string }; Returns: boolean }
     }
     Enums: {

@@ -3,7 +3,7 @@ import { User, Session } from '@supabase/supabase-js';
 import { supabase } from '@/integrations/supabase/client';
 import { useNavigate } from 'react-router-dom';
 
-type AppRole = 'learner' | 'teacher' | 'grade_head' | 'principal' | 'admin';
+type AppRole = 'learner' | 'teacher' | 'grade_head' | 'principal' | 'admin' | 'sgb';
 type ApplicationStatus = 'pending' | 'accepted' | 'rejected';
 
 interface UserRole {

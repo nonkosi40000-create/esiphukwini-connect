@@ -19,6 +19,9 @@ import {
   BarChart3,
   UserCheck,
   Shield,
+  MessageSquare,
+  Send,
+  Mail,
 } from "lucide-react";
 
 interface NavItem {
@@ -219,4 +222,30 @@ export const teacherNavItems: NavItem[] = [
   { name: "Attendance", href: "/teacher/attendance", icon: Calendar },
   { name: "Content", href: "/teacher/content", icon: FileText },
   { name: "Reports", href: "/teacher/reports", icon: BarChart3 },
+  { name: "Messages", href: "/teacher/messages", icon: MessageSquare },
+];
+
+export const principalNavItems: NavItem[] = [
+  { name: "Dashboard", href: "/principal", icon: Home },
+  { name: "Staff", href: "/principal/staff", icon: Users },
+  { name: "Classes", href: "/principal/classes", icon: BookOpen },
+  { name: "Messages", href: "/principal/messages", icon: MessageSquare },
+  { name: "Announcements", href: "/principal/announcements", icon: Bell },
+  { name: "Reports", href: "/principal/reports", icon: BarChart3 },
+];
+
+export const gradeHeadNavItems: NavItem[] = [
+  { name: "Dashboard", href: "/grade-head", icon: Home },
+  { name: "My Grade", href: "/grade-head/grade", icon: BookOpen },
+  { name: "Teachers", href: "/grade-head/teachers", icon: Users },
+  { name: "Messages", href: "/grade-head/messages", icon: MessageSquare },
+  { name: "Attendance", href: "/grade-head/attendance", icon: Calendar },
+  { name: "Reports", href: "/grade-head/reports", icon: BarChart3 },
+];
+
+export const sgbNavItems: NavItem[] = [
+  { name: "Dashboard", href: "/sgb", icon: Home },
+  { name: "Messages", href: "/sgb/messages", icon: MessageSquare },
+  { name: "Documents", href: "/sgb/documents", icon: FileText },
+  { name: "Meetings", href: "/sgb/meetings", icon: Calendar },
 ];

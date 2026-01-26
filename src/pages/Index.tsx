@@ -47,7 +47,7 @@ const features = [
   {
     icon: Bell,
     title: "Instant Notifications",
-    description: "Subscribe for R20/month and never miss important school announcements.",
+    description: "Subscribe for R10/month and never miss important school announcements.",
   },
 ];
 
@@ -297,7 +297,7 @@ const Index = () => {
                     Stay connected with your child's education journey for just:
                   </p>
                   <div className="flex items-baseline gap-2 mb-6">
-                    <span className="text-5xl font-bold">R20</span>
+                    <span className="text-5xl font-bold">R10</span>
                     <span className="text-primary-foreground/60">/month</span>
                   </div>
                   <ul className="space-y-3 mb-8">
