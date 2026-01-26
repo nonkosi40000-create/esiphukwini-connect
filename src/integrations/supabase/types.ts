@@ -617,7 +617,13 @@ export type Database = {
       is_staff: { Args: { _user_id: string }; Returns: boolean }
     }
     Enums: {
-      app_role: "learner" | "teacher" | "grade_head" | "principal" | "admin"
+      app_role:
+        | "learner"
+        | "teacher"
+        | "grade_head"
+        | "principal"
+        | "admin"
+        | "sgb"
       application_status: "pending" | "accepted" | "rejected"
       class_section: "A" | "B" | "C"
       grade_level: "R" | "1" | "2" | "3" | "4" | "5" | "6" | "7"
@@ -748,7 +754,14 @@ export type CompositeTypes<
 export const Constants = {
   public: {
     Enums: {
-      app_role: ["learner", "teacher", "grade_head", "principal", "admin"],
+      app_role: [
+        "learner",
+        "teacher",
+        "grade_head",
+        "principal",
+        "admin",
+        "sgb",
+      ],
       application_status: ["pending", "accepted", "rejected"],
       class_section: ["A", "B", "C"],
       grade_level: ["R", "1", "2", "3", "4", "5", "6", "7"],
