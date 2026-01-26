@@ -87,7 +87,7 @@ const ParentPortal = () => {
                 Never Miss an Important Update
               </h2>
               <p className="text-muted-foreground mb-8 leading-relaxed">
-                For just R20 per month, stay fully connected with your child's school life. 
+                For just R10 per month, stay fully connected with your child's school life. 
                 Receive instant notifications about meetings, events, and academic updates.
               </p>
 
@@ -124,7 +124,7 @@ const ParentPortal = () => {
                 <div className="gradient-primary p-8 text-center">
                   <p className="text-primary-foreground/80 mb-2">Monthly Subscription</p>
                   <div className="flex items-baseline justify-center gap-2">
-                    <span className="text-5xl font-bold text-primary-foreground">R20</span>
+                    <span className="text-5xl font-bold text-primary-foreground">R10</span>
                     <span className="text-primary-foreground/60">/month</span>
                   </div>
                   <p className="text-primary-foreground/70 text-sm mt-2">
@@ -178,7 +178,7 @@ const ParentPortal = () => {
                             <span>Secure payment via card or EFT</span>
                           </div>
                           <Button type="submit" variant="gold" className="w-full" size="lg">
-                            Subscribe Now - R20/month
+                            Subscribe Now - R10/month
                           </Button>
                         </div>
 

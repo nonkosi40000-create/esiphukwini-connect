@@ -15,6 +15,7 @@ import {
   Star
 } from "lucide-react";
 import patternBg from "@/assets/pattern-bg.jpg";
+import computerLabImage from "@/assets/computer-lab.jpg";
 
 // Foundation Phase (Grade R-3)
 const foundationPhaseGrades = [
@@ -46,7 +47,7 @@ const intermediateAndSeniorSubjects = [
   { icon: Globe, name: "Social Sciences", description: "History and Geography" },
   { icon: Calculator, name: "EMS", description: "Economic and Management Sciences" },
   { icon: Palette, name: "Life Orientation", description: "Personal and social well-being" },
-  { icon: Trophy, name: "Technology", description: "Design and technological skills" },
+  { icon: Trophy, name: "Technology", description: "Design and technological skills", hasImage: true },
   { icon: Music, name: "Creative Arts", description: "Visual arts, drama, dance and music" },
 ];
 
@@ -257,13 +258,34 @@ const Academics = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: index * 0.05 }}
-                  className="bg-muted rounded-xl p-4 shadow-soft group hover:shadow-elevated transition-all duration-300"
+                  className={`bg-muted rounded-xl shadow-soft group hover:shadow-elevated transition-all duration-300 overflow-hidden ${
+                    subject.hasImage ? 'row-span-2' : ''
+                  }`}
                 >
-                  <div className="gradient-primary w-10 h-10 rounded-lg flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
-                    <subject.icon className="h-5 w-5 text-primary-foreground" />
-                  </div>
-                  <h4 className="font-display font-bold text-foreground mb-1">{subject.name}</h4>
-                  <p className="text-muted-foreground text-xs">{subject.description}</p>
+                  {subject.hasImage ? (
+                    <div className="h-full flex flex-col">
+                      <img 
+                        src={computerLabImage} 
+                        alt="Students in computer lab" 
+                        className="w-full h-48 object-cover"
+                      />
+                      <div className="p-4">
+                        <div className="gradient-primary w-10 h-10 rounded-lg flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                          <subject.icon className="h-5 w-5 text-primary-foreground" />
+                        </div>
+                        <h4 className="font-display font-bold text-foreground mb-1">{subject.name}</h4>
+                        <p className="text-muted-foreground text-xs">{subject.description}</p>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="p-4">
+                      <div className="gradient-primary w-10 h-10 rounded-lg flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                        <subject.icon className="h-5 w-5 text-primary-foreground" />
+                      </div>
+                      <h4 className="font-display font-bold text-foreground mb-1">{subject.name}</h4>
+                      <p className="text-muted-foreground text-xs">{subject.description}</p>
+                    </div>
+                  )}
                 </motion.div>
               ))}
             </div>

@@ -17,6 +17,9 @@ import NotFound from "./pages/NotFound";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminApplications from "./pages/admin/AdminApplications";
 import TeacherDashboard from "./pages/teacher/TeacherDashboard";
+import PrincipalDashboard from "./pages/principal/PrincipalDashboard";
+import GradeHeadDashboard from "./pages/grade-head/GradeHeadDashboard";
+import SGBDashboard from "./pages/sgb/SGBDashboard";
 import Gallery from "./pages/Gallery";
 
 const queryClient = new QueryClient();
@@ -44,6 +47,12 @@ const App = () => (
             <Route path="/admin/applications" element={<AdminApplications />} />
             {/* Teacher Routes */}
             <Route path="/teacher" element={<TeacherDashboard />} />
+            {/* Principal Routes */}
+            <Route path="/principal" element={<PrincipalDashboard />} />
+            {/* Grade Head Routes */}
+            <Route path="/grade-head" element={<GradeHeadDashboard />} />
+            {/* SGB Routes */}
+            <Route path="/sgb" element={<SGBDashboard />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

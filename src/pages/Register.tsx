@@ -27,7 +27,7 @@ import { supabase } from "@/integrations/supabase/client";
 import type { Database } from "@/integrations/supabase/types";
 import patternBg from "@/assets/pattern-bg.jpg";
 
-type UserType = 'learner' | 'teacher' | 'grade_head' | 'principal' | 'admin';
+type UserType = 'learner' | 'teacher' | 'grade_head' | 'principal' | 'admin' | 'sgb';
 type GradeLevel = 'R' | '1' | '2' | '3' | '4' | '5' | '6' | '7';
 
 const gradeOptions: { value: GradeLevel; label: string }[] = [
@@ -406,6 +406,7 @@ const Register = () => {
                     { type: 'grade_head' as UserType, icon: User, label: 'Grade Head' },
                     { type: 'principal' as UserType, icon: Briefcase, label: 'Principal' },
                     { type: 'admin' as UserType, icon: Briefcase, label: 'Admin' },
+                    { type: 'sgb' as UserType, icon: Briefcase, label: 'SGB Member' },
                   ].map(({ type, icon: Icon, label }) => (
                     <button
                       key={type}
