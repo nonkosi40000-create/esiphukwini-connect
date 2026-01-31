@@ -10,7 +10,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { Mail, MailOpen, AlertCircle, FileText, Bell } from "lucide-react";
+import { Mail, MailOpen, AlertCircle, FileText, Paperclip, Download, ExternalLink } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
 import { format } from "date-fns";
@@ -23,6 +23,7 @@ interface Message {
   message_type: string;
   is_read: boolean;
   created_at: string;
+  attachment_url: string | null;
   sender_name?: string;
 }
 
@@ -112,14 +113,36 @@ export function MessageInbox() {
     }
   };
 
-  const getMessageIcon = (type: string) => {
+  const getMessageIcon = (type: string, hasAttachment: boolean) => {
+    if (hasAttachment || type === "document") {
+      return <FileText className="h-4 w-4 text-blue-500" />;
+    }
     switch (type) {
       case "summon":
         return <AlertCircle className="h-4 w-4 text-amber-500" />;
-      case "document":
-        return <FileText className="h-4 w-4 text-blue-500" />;
       default:
         return <Mail className="h-4 w-4 text-primary" />;
+    }
+  };
+
+  const getFileNameFromUrl = (url: string) => {
+    try {
+      const parts = url.split("/");
+      const fileName = parts[parts.length - 1];
+      // Remove the timestamp prefix
+      const cleanName = fileName.replace(/^\d+-[a-z0-9]+\./, "");
+      return cleanName || "attachment";
+    } catch {
+      return "attachment";
+    }
+  };
+
+  const getFileExtension = (url: string) => {
+    try {
+      const ext = url.split(".").pop()?.toLowerCase();
+      return ext || "";
+    } catch {
+      return "";
     }
   };
 
@@ -180,7 +203,7 @@ export function MessageInbox() {
                           {message.is_read ? (
                             <MailOpen className="h-4 w-4 text-muted-foreground" />
                           ) : (
-                            getMessageIcon(message.message_type)
+                            getMessageIcon(message.message_type, !!message.attachment_url)
                           )}
                         </div>
                         <div className="flex-1 min-w-0">
@@ -209,11 +232,19 @@ export function MessageInbox() {
                             {message.content}
                           </p>
                         </div>
-                        {message.message_type === "summon" && (
-                          <Badge variant="outline" className="bg-amber-500/10 text-amber-600 border-amber-200">
-                            Summon
-                          </Badge>
-                        )}
+                        <div className="flex flex-col items-end gap-1">
+                          {message.message_type === "summon" && (
+                            <Badge variant="outline" className="bg-amber-500/10 text-amber-600 border-amber-200">
+                              Summon
+                            </Badge>
+                          )}
+                          {message.attachment_url && (
+                            <Badge variant="outline" className="bg-blue-500/10 text-blue-600 border-blue-200">
+                              <Paperclip className="h-3 w-3 mr-1" />
+                              File
+                            </Badge>
+                          )}
+                        </div>
                       </div>
                     </button>
                   </motion.div>
@@ -228,7 +259,7 @@ export function MessageInbox() {
         <DialogContent className="sm:max-w-[600px]">
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2">
-              {selectedMessage && getMessageIcon(selectedMessage.message_type)}
+              {selectedMessage && getMessageIcon(selectedMessage.message_type, !!selectedMessage.attachment_url)}
               {selectedMessage?.subject}
             </DialogTitle>
           </DialogHeader>
@@ -243,6 +274,49 @@ export function MessageInbox() {
               <div className="border-t pt-4">
                 <p className="whitespace-pre-wrap">{selectedMessage.content}</p>
               </div>
+
+              {/* Attachment Display */}
+              {selectedMessage.attachment_url && (
+                <div className="border-t pt-4">
+                  <h4 className="text-sm font-medium mb-3 flex items-center gap-2">
+                    <Paperclip className="h-4 w-4" />
+                    Attachment
+                  </h4>
+                  <div className="flex items-center gap-3 p-3 bg-muted rounded-lg">
+                    <FileText className="h-8 w-8 text-blue-500" />
+                    <div className="flex-1 min-w-0">
+                      <p className="text-sm font-medium truncate">
+                        {getFileNameFromUrl(selectedMessage.attachment_url)}
+                      </p>
+                      <p className="text-xs text-muted-foreground uppercase">
+                        {getFileExtension(selectedMessage.attachment_url)} file
+                      </p>
+                    </div>
+                    <div className="flex gap-2">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="gap-2"
+                        onClick={() => window.open(selectedMessage.attachment_url!, "_blank")}
+                      >
+                        <ExternalLink className="h-4 w-4" />
+                        View
+                      </Button>
+                      <Button
+                        variant="default"
+                        size="sm"
+                        className="gap-2"
+                        asChild
+                      >
+                        <a href={selectedMessage.attachment_url} download>
+                          <Download className="h-4 w-4" />
+                          Download
+                        </a>
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
           )}
         </DialogContent>
