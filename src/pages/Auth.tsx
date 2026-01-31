@@ -64,6 +64,9 @@ const Auth = () => {
           case 'learner':
             navigate('/student');
             break;
+          case 'sgb':
+            navigate('/sgb');
+            break;
           default:
             navigate('/pending');
         }
