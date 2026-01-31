@@ -20,6 +20,7 @@ import TeacherDashboard from "./pages/teacher/TeacherDashboard";
 import PrincipalDashboard from "./pages/principal/PrincipalDashboard";
 import GradeHeadDashboard from "./pages/grade-head/GradeHeadDashboard";
 import SGBDashboard from "./pages/sgb/SGBDashboard";
+import StudentDashboard from "./pages/student/StudentDashboard";
 import Gallery from "./pages/Gallery";
 
 const queryClient = new QueryClient();
@@ -53,6 +54,8 @@ const App = () => (
             <Route path="/grade-head" element={<GradeHeadDashboard />} />
             {/* SGB Routes */}
             <Route path="/sgb" element={<SGBDashboard />} />
+            {/* Student Routes */}
+            <Route path="/student" element={<StudentDashboard />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
