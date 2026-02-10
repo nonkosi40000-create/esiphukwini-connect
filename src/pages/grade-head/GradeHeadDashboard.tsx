@@ -155,10 +155,10 @@ export default function GradeHeadDashboard() {
           <Card className="bg-gradient-to-r from-primary/10 to-primary/5 border-primary/20">
             <CardContent className="p-6">
               <h2 className="font-display text-xl font-bold text-foreground mb-2">
-                Welcome back, {profile?.first_name}!
+                Welcome back, {profile?.first_name}! 📋
               </h2>
               <p className="text-muted-foreground">
-                Manage your grade's teachers and students from here.
+                Coordinate your grade's success. Monitor teachers, track student performance, and manage assessments.
               </p>
             </CardContent>
           </Card>

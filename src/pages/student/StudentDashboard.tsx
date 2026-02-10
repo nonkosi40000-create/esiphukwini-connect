@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useAuth } from "@/hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import { motion } from "framer-motion";
 import {
   Home,
   BookOpen,
@@ -64,7 +65,25 @@ const StudentDashboard = () => {
 
   return (
     <DashboardLayout title="Student Dashboard" navItems={studentNavItems}>
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div className="space-y-6">
+        {/* Welcome Message */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+        >
+          <Card className="bg-gradient-to-r from-primary/10 to-primary/5 border-primary/20">
+            <CardContent className="p-6">
+              <h2 className="font-display text-xl font-bold text-foreground mb-2">
+                Welcome back, {profile?.first_name}! 🎓
+              </h2>
+              <p className="text-muted-foreground">
+                Access your marks, view class content, and stay updated with announcements from your teachers.
+              </p>
+            </CardContent>
+          </Card>
+        </motion.div>
+
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">My Average</CardTitle>
@@ -104,18 +123,6 @@ const StudentDashboard = () => {
           </CardContent>
         </Card>
       </div>
-
-      <div className="mt-6">
-        <Card>
-          <CardHeader>
-            <CardTitle>Welcome, {profile?.first_name}!</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-muted-foreground">
-              Access your marks, view class content, and stay updated with announcements from your teachers.
-            </p>
-          </CardContent>
-        </Card>
       </div>
     </DashboardLayout>
   );
