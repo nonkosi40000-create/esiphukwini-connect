@@ -22,7 +22,7 @@ import { useToast } from "@/hooks/use-toast";
 import { loginSchema } from "@/lib/validations";
 import patternBg from "@/assets/pattern-bg.jpg";
 
-type UserType = 'learner' | 'teacher' | 'grade_head' | 'principal' | 'admin';
+type UserType = 'learner' | 'teacher' | 'grade_head' | 'principal' | 'admin' | 'sgb';
 
 const userTypeInfo = {
   learner: { icon: BookOpen, label: 'Learner', description: 'Student portal access' },
@@ -30,6 +30,7 @@ const userTypeInfo = {
   grade_head: { icon: UserCheck, label: 'Grade Head', description: 'Grade oversight & management' },
   principal: { icon: Crown, label: 'Principal', description: 'Full school oversight' },
   admin: { icon: Shield, label: 'Admin', description: 'System administration' },
+  sgb: { icon: GraduationCap, label: 'SGB', description: 'School Governing Body' },
 };
 
 const Auth = () => {
@@ -201,8 +202,8 @@ const Auth = () => {
                 </div>
 
                 {/* More roles dropdown for advanced users */}
-                <div className="grid grid-cols-2 gap-2 mb-6">
-                  {(['grade_head', 'principal'] as UserType[]).map((type) => {
+                <div className="grid grid-cols-3 gap-2 mb-6">
+                  {(['grade_head', 'principal', 'sgb'] as UserType[]).map((type) => {
                     const info = userTypeInfo[type];
                     return (
                       <button
