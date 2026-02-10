@@ -149,10 +149,10 @@ export default function SGBDashboard() {
           <Card className="bg-gradient-to-r from-primary/10 to-primary/5 border-primary/20">
             <CardContent className="p-6">
               <h2 className="font-display text-xl font-bold text-foreground mb-2">
-                Welcome, {profile?.first_name}!
+                Welcome, {profile?.first_name}! 🤝
               </h2>
               <p className="text-muted-foreground">
-                School Governing Body Member Portal - Communicate with the Principal and other SGB members.
+                Govern with purpose. Communicate with the Principal, review documents, and help shape school policy.
               </p>
             </CardContent>
           </Card>

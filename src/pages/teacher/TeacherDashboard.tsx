@@ -133,10 +133,10 @@ export default function TeacherDashboard() {
           <Card className="bg-gradient-to-r from-primary/10 to-primary/5 border-primary/20">
             <CardContent className="p-6">
               <h2 className="font-display text-xl font-bold text-foreground mb-2">
-                Welcome back, {profile?.first_name}!
+                Welcome back, {profile?.first_name}! 📚
               </h2>
               <p className="text-muted-foreground">
-                Here's an overview of your teaching activities and updates.
+                Ready to inspire! Manage your classes, enter marks, and share learning materials with your students.
               </p>
             </CardContent>
           </Card>

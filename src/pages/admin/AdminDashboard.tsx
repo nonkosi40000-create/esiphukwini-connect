@@ -137,6 +137,23 @@ export default function AdminDashboard() {
   return (
     <DashboardLayout title="Admin Dashboard" navItems={adminNavItems}>
       <div className="space-y-6">
+        {/* Welcome Message */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+        >
+          <Card className="bg-gradient-to-r from-primary/10 to-primary/5 border-primary/20">
+            <CardContent className="p-6">
+              <h2 className="font-display text-xl font-bold text-foreground mb-2">
+                Welcome back, Administrator!
+              </h2>
+              <p className="text-muted-foreground">
+                You have full system oversight. Review applications, manage users, and keep the school running smoothly.
+              </p>
+            </CardContent>
+          </Card>
+        </motion.div>
+
         {/* Stats Grid */}
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {statCards.map((stat, index) => (
