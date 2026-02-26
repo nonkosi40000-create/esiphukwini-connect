@@ -157,6 +157,48 @@ export type Database = {
         }
         Relationships: []
       }
+      fee_payments: {
+        Row: {
+          amount: number
+          created_at: string
+          id: string
+          notes: string | null
+          payment_date: string
+          payment_type: string
+          proof_of_payment_url: string | null
+          reference: string | null
+          status: string
+          student_id: string
+          verified_by: string | null
+        }
+        Insert: {
+          amount: number
+          created_at?: string
+          id?: string
+          notes?: string | null
+          payment_date?: string
+          payment_type: string
+          proof_of_payment_url?: string | null
+          reference?: string | null
+          status?: string
+          student_id: string
+          verified_by?: string | null
+        }
+        Update: {
+          amount?: number
+          created_at?: string
+          id?: string
+          notes?: string | null
+          payment_date?: string
+          payment_type?: string
+          proof_of_payment_url?: string | null
+          reference?: string | null
+          status?: string
+          student_id?: string
+          verified_by?: string | null
+        }
+        Relationships: []
+      }
       learner_registrations: {
         Row: {
           applying_for_grade: Database["public"]["Enums"]["grade_level"]
@@ -536,6 +578,193 @@ export type Database = {
         }
         Relationships: []
       }
+      quiz_attempts: {
+        Row: {
+          answers: Json
+          completed_at: string | null
+          id: string
+          quiz_id: string
+          score: number | null
+          started_at: string
+          student_id: string
+          total_points: number | null
+        }
+        Insert: {
+          answers?: Json
+          completed_at?: string | null
+          id?: string
+          quiz_id: string
+          score?: number | null
+          started_at?: string
+          student_id: string
+          total_points?: number | null
+        }
+        Update: {
+          answers?: Json
+          completed_at?: string | null
+          id?: string
+          quiz_id?: string
+          score?: number | null
+          started_at?: string
+          student_id?: string
+          total_points?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "quiz_attempts_quiz_id_fkey"
+            columns: ["quiz_id"]
+            isOneToOne: false
+            referencedRelation: "quizzes"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      quiz_questions: {
+        Row: {
+          correct_answer: string
+          id: string
+          option_a: string
+          option_b: string
+          option_c: string | null
+          option_d: string | null
+          points: number
+          question_text: string
+          quiz_id: string
+          sort_order: number
+        }
+        Insert: {
+          correct_answer: string
+          id?: string
+          option_a: string
+          option_b: string
+          option_c?: string | null
+          option_d?: string | null
+          points?: number
+          question_text: string
+          quiz_id: string
+          sort_order?: number
+        }
+        Update: {
+          correct_answer?: string
+          id?: string
+          option_a?: string
+          option_b?: string
+          option_c?: string | null
+          option_d?: string | null
+          points?: number
+          question_text?: string
+          quiz_id?: string
+          sort_order?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "quiz_questions_quiz_id_fkey"
+            columns: ["quiz_id"]
+            isOneToOne: false
+            referencedRelation: "quizzes"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      quizzes: {
+        Row: {
+          created_at: string
+          created_by: string
+          description: string | null
+          grade_level: string
+          id: string
+          is_active: boolean
+          subject: string
+          time_limit_minutes: number | null
+          title: string
+        }
+        Insert: {
+          created_at?: string
+          created_by: string
+          description?: string | null
+          grade_level: string
+          id?: string
+          is_active?: boolean
+          subject: string
+          time_limit_minutes?: number | null
+          title: string
+        }
+        Update: {
+          created_at?: string
+          created_by?: string
+          description?: string | null
+          grade_level?: string
+          id?: string
+          is_active?: boolean
+          subject?: string
+          time_limit_minutes?: number | null
+          title?: string
+        }
+        Relationships: []
+      }
+      school_account_info: {
+        Row: {
+          account_holder: string
+          account_number: string
+          bank_name: string
+          branch_code: string
+          id: string
+          reference_instructions: string | null
+          updated_at: string
+          updated_by: string | null
+        }
+        Insert: {
+          account_holder: string
+          account_number: string
+          bank_name: string
+          branch_code: string
+          id?: string
+          reference_instructions?: string | null
+          updated_at?: string
+          updated_by?: string | null
+        }
+        Update: {
+          account_holder?: string
+          account_number?: string
+          bank_name?: string
+          branch_code?: string
+          id?: string
+          reference_instructions?: string | null
+          updated_at?: string
+          updated_by?: string | null
+        }
+        Relationships: []
+      }
+      staff_ratings: {
+        Row: {
+          comment: string | null
+          created_at: string
+          id: string
+          rated_role: string
+          rated_user_id: string
+          rater_role: string
+          rating: number
+        }
+        Insert: {
+          comment?: string | null
+          created_at?: string
+          id?: string
+          rated_role: string
+          rated_user_id: string
+          rater_role: string
+          rating: number
+        }
+        Update: {
+          comment?: string | null
+          created_at?: string
+          id?: string
+          rated_role?: string
+          rated_user_id?: string
+          rater_role?: string
+          rating?: number
+        }
+        Relationships: []
+      }
       staff_registrations: {
         Row: {
           created_at: string
@@ -611,6 +840,42 @@ export type Database = {
         }
         Relationships: []
       }
+      timetables: {
+        Row: {
+          academic_year: number
+          created_at: string
+          file_url: string | null
+          grade_level: string
+          id: string
+          term: number
+          timetable_data: Json | null
+          title: string
+          uploaded_by: string
+        }
+        Insert: {
+          academic_year?: number
+          created_at?: string
+          file_url?: string | null
+          grade_level: string
+          id?: string
+          term?: number
+          timetable_data?: Json | null
+          title: string
+          uploaded_by: string
+        }
+        Update: {
+          academic_year?: number
+          created_at?: string
+          file_url?: string | null
+          grade_level?: string
+          id?: string
+          term?: number
+          timetable_data?: Json | null
+          title?: string
+          uploaded_by?: string
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           application_status: Database["public"]["Enums"]["application_status"]
@@ -650,6 +915,7 @@ export type Database = {
         Returns: boolean
       }
       is_admin_or_principal: { Args: { _user_id: string }; Returns: boolean }
+      is_finance: { Args: { _user_id: string }; Returns: boolean }
       is_grade_head: { Args: { _user_id: string }; Returns: boolean }
       is_principal: { Args: { _user_id: string }; Returns: boolean }
       is_sgb: { Args: { _user_id: string }; Returns: boolean }
