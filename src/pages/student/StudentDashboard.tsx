@@ -1,26 +1,17 @@
-import { DashboardLayout } from "@/components/DashboardLayout";
+import { DashboardLayout, studentNavItems } from "@/components/DashboardLayout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useAuth } from "@/hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 import {
-  Home,
   BookOpen,
   FileText,
   Calendar,
   BarChart3,
-  Bell,
 } from "lucide-react";
-
-const studentNavItems = [
-  { name: "Dashboard", href: "/student", icon: Home },
-  { name: "My Classes", href: "/student/classes", icon: BookOpen },
-  { name: "My Marks", href: "/student/marks", icon: BarChart3 },
-  { name: "Content", href: "/student/content", icon: FileText },
-  { name: "Schedule", href: "/student/schedule", icon: Calendar },
-  { name: "Announcements", href: "/student/announcements", icon: Bell },
-];
+import { QuizPlayer } from "@/components/student/QuizPlayer";
+import { TimetableView } from "@/components/student/TimetableView";
 
 const StudentDashboard = () => {
   const { user, profile, isAccepted, isLoading, primaryRole } = useAuth();
@@ -77,52 +68,52 @@ const StudentDashboard = () => {
                 Welcome back, {profile?.first_name}! 🎓
               </h2>
               <p className="text-muted-foreground">
-                Access your marks, view class content, and stay updated with announcements from your teachers.
+                Access your marks, play quizzes, view timetables, and stay updated with announcements.
               </p>
             </CardContent>
           </Card>
         </motion.div>
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">My Average</CardTitle>
-            <BarChart3 className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">--</div>
-            <p className="text-xs text-muted-foreground">
-              Current term average
-            </p>
-          </CardContent>
-        </Card>
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium">My Average</CardTitle>
+              <BarChart3 className="h-4 w-4 text-muted-foreground" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold">--</div>
+              <p className="text-xs text-muted-foreground">Current term average</p>
+            </CardContent>
+          </Card>
 
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Attendance</CardTitle>
-            <Calendar className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">--</div>
-            <p className="text-xs text-muted-foreground">
-              Days present this term
-            </p>
-          </CardContent>
-        </Card>
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium">Attendance</CardTitle>
+              <Calendar className="h-4 w-4 text-muted-foreground" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold">--</div>
+              <p className="text-xs text-muted-foreground">Days present this term</p>
+            </CardContent>
+          </Card>
 
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Assignments</CardTitle>
-            <FileText className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">--</div>
-            <p className="text-xs text-muted-foreground">
-              Pending assignments
-            </p>
-          </CardContent>
-        </Card>
-      </div>
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium">Assignments</CardTitle>
+              <FileText className="h-4 w-4 text-muted-foreground" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold">--</div>
+              <p className="text-xs text-muted-foreground">Pending assignments</p>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Quizzes */}
+        <QuizPlayer />
+
+        {/* Timetable */}
+        <TimetableView />
       </div>
     </DashboardLayout>
   );

@@ -7,6 +7,8 @@ import { supabase } from "@/integrations/supabase/client";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { MessageComposer } from "@/components/messaging/MessageComposer";
 import { MessageInbox } from "@/components/messaging/MessageInbox";
+import { TimetableUpload } from "@/components/gradehead/TimetableUpload";
+import { TeacherRatingsView } from "@/components/gradehead/TeacherRatingsView";
 import { Users, BookOpen, ClipboardList, MessageSquare } from "lucide-react";
 
 interface DashboardStats {
@@ -196,12 +198,22 @@ export default function GradeHeadDashboard() {
           ))}
         </div>
 
+        {/* Timetable Upload */}
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>
+          <TimetableUpload />
+        </motion.div>
+
+        {/* Teacher Ratings */}
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}>
+          <TeacherRatingsView />
+        </motion.div>
+
         {/* Messaging Section */}
         <div className="grid gap-6 md:grid-cols-2">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
+            transition={{ delay: 0.6 }}
           >
             <Card>
               <CardHeader>
@@ -222,7 +234,7 @@ export default function GradeHeadDashboard() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5 }}
+            transition={{ delay: 0.7 }}
           >
             <MessageInbox />
           </motion.div>

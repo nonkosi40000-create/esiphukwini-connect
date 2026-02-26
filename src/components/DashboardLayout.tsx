@@ -221,6 +221,7 @@ export const teacherNavItems: NavItem[] = [
   { name: "Marks Entry", href: "/teacher/marks", icon: ClipboardList },
   { name: "Attendance", href: "/teacher/attendance", icon: Calendar },
   { name: "Content", href: "/teacher/content", icon: FileText },
+  { name: "Rate Grade Head", href: "/teacher/rate-grade-head", icon: BarChart3 },
   { name: "Reports", href: "/teacher/reports", icon: BarChart3 },
   { name: "Messages", href: "/teacher/messages", icon: MessageSquare },
 ];
@@ -238,8 +239,9 @@ export const gradeHeadNavItems: NavItem[] = [
   { name: "Dashboard", href: "/grade-head", icon: Home },
   { name: "My Grade", href: "/grade-head/grade", icon: BookOpen },
   { name: "Teachers", href: "/grade-head/teachers", icon: Users },
+  { name: "Timetable", href: "/grade-head/timetable", icon: Calendar },
+  { name: "Teacher Ratings", href: "/grade-head/ratings", icon: BarChart3 },
   { name: "Messages", href: "/grade-head/messages", icon: MessageSquare },
-  { name: "Attendance", href: "/grade-head/attendance", icon: Calendar },
   { name: "Reports", href: "/grade-head/reports", icon: BarChart3 },
 ];
 
@@ -248,4 +250,20 @@ export const sgbNavItems: NavItem[] = [
   { name: "Messages", href: "/sgb/messages", icon: MessageSquare },
   { name: "Documents", href: "/sgb/documents", icon: FileText },
   { name: "Meetings", href: "/sgb/meetings", icon: Calendar },
+];
+
+export const financeNavItems: NavItem[] = [
+  { name: "Dashboard", href: "/finance", icon: Home },
+  { name: "Fee Payments", href: "/finance/payments", icon: ClipboardList },
+  { name: "School Account", href: "/finance/account", icon: Settings },
+];
+
+export const studentNavItems: NavItem[] = [
+  { name: "Dashboard", href: "/student", icon: Home },
+  { name: "My Classes", href: "/student/classes", icon: BookOpen },
+  { name: "My Marks", href: "/student/marks", icon: BarChart3 },
+  { name: "Quizzes", href: "/student/quizzes", icon: ClipboardList },
+  { name: "Timetable", href: "/student/timetable", icon: Calendar },
+  { name: "Content", href: "/student/content", icon: FileText },
+  { name: "Announcements", href: "/student/announcements", icon: Bell },
 ];
