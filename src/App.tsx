@@ -11,6 +11,7 @@ import Academics from "./pages/Academics";
 import Register from "./pages/Register";
 import PastPapers from "./pages/PastPapers";
 import ParentPortal from "./pages/ParentPortal";
+import ParentDashboard from "./pages/parent/ParentDashboard";
 import Auth from "./pages/Auth";
 import Pending from "./pages/Pending";
 import NotFound from "./pages/NotFound";
@@ -21,6 +22,7 @@ import PrincipalDashboard from "./pages/principal/PrincipalDashboard";
 import GradeHeadDashboard from "./pages/grade-head/GradeHeadDashboard";
 import SGBDashboard from "./pages/sgb/SGBDashboard";
 import StudentDashboard from "./pages/student/StudentDashboard";
+import FinanceDashboard from "./pages/finance/FinanceDashboard";
 import Gallery from "./pages/Gallery";
 
 const queryClient = new QueryClient();
@@ -40,6 +42,7 @@ const App = () => (
             <Route path="/register" element={<Register />} />
             <Route path="/past-papers" element={<PastPapers />} />
             <Route path="/parent-portal" element={<ParentPortal />} />
+            <Route path="/parent-dashboard" element={<ParentDashboard />} />
             <Route path="/auth" element={<Auth />} />
             <Route path="/login" element={<Auth />} />
             <Route path="/pending" element={<Pending />} />
@@ -56,6 +59,8 @@ const App = () => (
             <Route path="/sgb" element={<SGBDashboard />} />
             {/* Student Routes */}
             <Route path="/student" element={<StudentDashboard />} />
+            {/* Finance Routes */}
+            <Route path="/finance" element={<FinanceDashboard />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

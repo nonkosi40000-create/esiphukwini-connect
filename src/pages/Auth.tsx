@@ -15,14 +15,15 @@ import {
   BookOpen,
   UserCheck,
   Crown,
-  AlertCircle
+  AlertCircle,
+  Wallet
 } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
 import { useToast } from "@/hooks/use-toast";
 import { loginSchema } from "@/lib/validations";
 import patternBg from "@/assets/pattern-bg.jpg";
 
-type UserType = 'learner' | 'teacher' | 'grade_head' | 'principal' | 'admin' | 'sgb';
+type UserType = 'learner' | 'teacher' | 'grade_head' | 'principal' | 'admin' | 'sgb' | 'finance';
 
 const userTypeInfo = {
   learner: { icon: BookOpen, label: 'Learner', description: 'Student portal access' },
@@ -31,6 +32,7 @@ const userTypeInfo = {
   principal: { icon: Crown, label: 'Principal', description: 'Full school oversight' },
   admin: { icon: Shield, label: 'Admin', description: 'System administration' },
   sgb: { icon: GraduationCap, label: 'SGB', description: 'School Governing Body' },
+  finance: { icon: Wallet, label: 'Finance', description: 'Fee & payment management' },
 };
 
 const Auth = () => {
@@ -67,6 +69,9 @@ const Auth = () => {
             break;
           case 'sgb':
             navigate('/sgb');
+            break;
+          case 'finance':
+            navigate('/finance');
             break;
           default:
             navigate('/pending');
@@ -203,7 +208,7 @@ const Auth = () => {
 
                 {/* More roles dropdown for advanced users */}
                 <div className="grid grid-cols-3 gap-2 mb-6">
-                  {(['grade_head', 'principal', 'sgb'] as UserType[]).map((type) => {
+                  {(['grade_head', 'principal', 'sgb', 'finance'] as UserType[]).map((type) => {
                     const info = userTypeInfo[type];
                     return (
                       <button

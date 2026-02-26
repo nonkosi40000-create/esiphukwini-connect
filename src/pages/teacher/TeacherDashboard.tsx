@@ -6,6 +6,7 @@ import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { RateGradeHead } from "@/components/teacher/RateGradeHead";
 import {
   Users,
   BookOpen,
@@ -230,6 +231,11 @@ export default function TeacherDashboard() {
             </Card>
           </motion.div>
         </div>
+
+        {/* Rate Grade Head */}
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.7 }}>
+          <RateGradeHead />
+        </motion.div>
 
         {/* Upcoming Tasks */}
         <Card>
